@@ -42,17 +42,22 @@ export const Project = (): JSX.Element => {
     fetchData();
   }, []);
 
+  const gitHubPagesAndVersel = [
+    {link : "https://bruno-bpg.github.io/AnhangueraPTI/"},
+    {link : "https://hamburgueria-blond.vercel.app/"}
+  ]
+
   return (
     <>
-      {repositories?.map((repository) => (
+      {repositories?.map((repository, index) => (
         <ProjectWrapper key={repository.id}>
           <Text
             as="h2"
             type="heading3"
             css={{ marginBottom: "$3" }}
             color="grey1"
-          >
-            {repository.name}
+          >   
+            <a href={`${gitHubPagesAndVersel[index].link}`}>{repository.name}</a>
           </Text>
 
           {repository.language && (
@@ -65,7 +70,6 @@ export const Project = (): JSX.Element => {
               </ProjectStackTech>
             </ProjectStack>
           )}
-
           <Text type="body1" color="grey2">
             {repository.description}
           </Text>
